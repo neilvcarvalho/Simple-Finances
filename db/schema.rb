@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(:version => 20111230115819) do
   create_table "movimentacoes", :force => true do |t|
     t.decimal  "quantia"
     t.integer  "categoria_id"
-    t.integer  "conta_origem"
-    t.integer  "conta_destino"
+    t.integer  "conta_id"
+    t.integer  "conta_destino_id"
     t.string   "tipo"
     t.datetime "created_at"
     t.datetime "updated_at"

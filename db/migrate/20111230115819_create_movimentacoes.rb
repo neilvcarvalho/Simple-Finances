@@ -3,8 +3,8 @@ class CreateMovimentacoes < ActiveRecord::Migration
     create_table :movimentacoes do |t|
       t.decimal :quantia
       t.integer :categoria_id
-      t.integer :conta_origem
-      t.integer :conta_destino
+      t.integer :conta_id
+      t.integer :conta_destino_id
       t.string :tipo
       t.timestamps
     end
