@@ -6,6 +6,8 @@ gem 'rails', '3.1.1'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'devise'
+gem 'cancan'
 
 
 # Gems used only for assets and not required
@@ -33,4 +35,19 @@ gem 'jquery-rails'
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+end
+
+group :development do
+  gem 'guard'
+  gem 'ruby_gntp'
+  gem 'growl_notify'
+  gem 'guard-rails'
+  gem "nifty-generators"
+end
+
+group :test, :development do
+  gem "rspec-rails", "~> 2.6"
+  gem 'cucumber-rails'
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
 end
