@@ -28,16 +28,6 @@ ActiveRecord::Schema.define(:version => 20111230115819) do
     t.datetime "updated_at"
   end
 
-  create_table "movimentacaos", :force => true do |t|
-    t.decimal  "quantia"
-    t.integer  "categoria_id"
-    t.integer  "conta_origem"
-    t.integer  "conta_destino"
-    t.string   "tipo"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "movimentacoes", :force => true do |t|
     t.decimal  "quantia"
     t.integer  "categoria_id"
