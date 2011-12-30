@@ -9,4 +9,17 @@ FactoryGirl.define do
 		password "foobar123"
 		password_confirmation "foobar123"
 	end
+
+	factory :categoria do
+		descricao "Gastos pessoais"
+		association :user
+	end
+
+	factory :movimentacao do
+		association :categoria
+		quantia 100
+		association :conta
+		conta_destino_id 1
+		tipo "S" # E, S ou T
+	end
 end

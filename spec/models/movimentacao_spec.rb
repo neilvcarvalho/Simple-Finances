@@ -1,7 +1,14 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Movimentacao do
-  it "should be valid" do
-    Movimentacao.new.should be_valid
-  end
+	before(:each) do
+		@movimentacao = Factory.build(:movimentacao)
+	end
+
+	it "should not save without an amout" do
+		@movimentacao.quantia = nil
+		@movimentacao.save.should be_false
+		@movimentacao.quantia = 0
+		@movimentacao.save.should be_false
+	end
 end

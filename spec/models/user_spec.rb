@@ -11,4 +11,9 @@ describe User do
 		@user.save
 		@user.contas.size.should > 0
 	end
+
+	it "should create basic categories when creating an user" do
+		@user.save
+		@user.categorias.size.should > 0
+	end
 end
