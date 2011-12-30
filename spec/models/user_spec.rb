@@ -1,5 +1,14 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+	before(:each) do
+		@user = FactoryGirl.build(:user)
+	end
+	it "should save" do
+		@user.save.should be_true
+	end
+	it "should create basic accounts when creating an user" do
+		@user.save
+		@user.contas.size.should > 0
+	end
 end
