@@ -40,8 +40,8 @@ end
 group :development do
   gem 'guard'
   gem 'ruby_gntp'
-  gem 'growl_notify'
-  gem 'guard-rails'
+  gem 'growl'
+  gem 'guard-rspec'
   gem "nifty-generators"
 end
 
