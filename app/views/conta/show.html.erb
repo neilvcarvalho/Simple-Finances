@@ -1,0 +1,20 @@
+<% title "Conta" %>
+
+<p>
+  <strong>Saldo:</strong>
+  <%= @conta.saldo %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @conta.user_id %>
+</p>
+<p>
+  <strong>Descricao:</strong>
+  <%= @conta.descricao %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_conta_path(@conta) %> |
+  <%= link_to "Destroy", @conta, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", conta_path %>
+</p>

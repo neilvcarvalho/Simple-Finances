@@ -1,4 +1,6 @@
 SimpleFinances::Application.routes.draw do
+  resources :conta
+
   devise_for :users
 
   # The priority is based upon order of creation:
