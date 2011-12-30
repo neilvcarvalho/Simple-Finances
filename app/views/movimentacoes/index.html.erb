@@ -1,0 +1,25 @@
+<% title "Movimentacoes" %>
+
+<table>
+  <tr>
+    <th>Quantia</th>
+    <th>Categoria</th>
+    <th>Conta Origem</th>
+    <th>Conta Destino</th>
+    <th>Tipo</th>
+  </tr>
+  <% for movimentacao in @movimentacoes %>
+    <tr>
+      <td><%= movimentacao.quantia %></td>
+      <td><%= movimentacao.categoria_id %></td>
+      <td><%= movimentacao.conta_origem %></td>
+      <td><%= movimentacao.conta_destino %></td>
+      <td><%= movimentacao.tipo %></td>
+      <td><%= link_to "Show", movimentacao %></td>
+      <td><%= link_to "Edit", edit_movimentacao_path(movimentacao) %></td>
+      <td><%= link_to "Destroy", movimentacao, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Movimentacao", new_movimentacao_path %></p>

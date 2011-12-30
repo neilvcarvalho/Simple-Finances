@@ -1,0 +1,24 @@
+<%= form_for @movimentacao do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :quantia %><br />
+    <%= f.text_field :quantia %>
+  </p>
+  <p>
+    <%= f.label :categoria_id %><br />
+    <%= f.number_field :categoria_id %>
+  </p>
+  <p>
+    <%= f.label :conta_origem %><br />
+    <%= f.number_field :conta_origem %>
+  </p>
+  <p>
+    <%= f.label :conta_destino %><br />
+    <%= f.number_field :conta_destino %>
+  </p>
+  <p>
+    <%= f.label :tipo %><br />
+    <%= f.text_field :tipo %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

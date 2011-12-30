@@ -1,0 +1,28 @@
+<% title "Movimentacao" %>
+
+<p>
+  <strong>Quantia:</strong>
+  <%= @movimentacao.quantia %>
+</p>
+<p>
+  <strong>Categoria:</strong>
+  <%= @movimentacao.categoria_id %>
+</p>
+<p>
+  <strong>Conta Origem:</strong>
+  <%= @movimentacao.conta_origem %>
+</p>
+<p>
+  <strong>Conta Destino:</strong>
+  <%= @movimentacao.conta_destino %>
+</p>
+<p>
+  <strong>Tipo:</strong>
+  <%= @movimentacao.tipo %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_movimentacao_path(@movimentacao) %> |
+  <%= link_to "Destroy", @movimentacao, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", movimentacoes_path %>
+</p>

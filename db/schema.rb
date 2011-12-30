@@ -11,12 +11,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111230014956) do
+ActiveRecord::Schema.define(:version => 20111230115819) do
+
+  create_table "categoria", :force => true do |t|
+    t.string   "descricao"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "conta", :force => true do |t|
     t.decimal  "saldo"
     t.integer  "user_id"
     t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "movimentacaos", :force => true do |t|
+    t.decimal  "quantia"
+    t.integer  "categoria_id"
+    t.integer  "conta_origem"
+    t.integer  "conta_destino"
+    t.string   "tipo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "movimentacoes", :force => true do |t|
+    t.decimal  "quantia"
+    t.integer  "categoria_id"
+    t.integer  "conta_origem"
+    t.integer  "conta_destino"
+    t.string   "tipo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
