@@ -48,6 +48,7 @@ end
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
   gem 'cucumber-rails'
-  # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
 end
+gem "mocha", :group => :test
