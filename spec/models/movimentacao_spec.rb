@@ -11,4 +11,9 @@ describe Movimentacao do
 		@movimentacao.quantia = 0
 		@movimentacao.save.should be_false
 	end
+
+	it "must belong to an account" do
+		@movimentacao.conta_id = nil
+		@movimentacao.save.should be_false
+	end
 end

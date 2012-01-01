@@ -21,5 +21,6 @@ FactoryGirl.define do
 		association :conta
 		conta_destino_id 1
 		tipo "S" # E, S ou T
+		date Time.now
 	end
 end

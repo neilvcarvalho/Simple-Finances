@@ -1,6 +1,10 @@
 <%= form_for @movimentacao do |f| %>
   <%= f.error_messages %>
   <p>
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </p>
+  <p>
     <%= f.label :quantia %><br />
     <%= f.text_field :quantia %>
   </p>
@@ -9,12 +13,12 @@
     <%= f.number_field :categoria_id %>
   </p>
   <p>
-    <%= f.label :conta_origem %><br />
-    <%= f.number_field :conta_origem %>
+    <%= f.label :conta_id %><br />
+    <%= f.number_field :conta_id %>
   </p>
   <p>
-    <%= f.label :conta_destino %><br />
-    <%= f.number_field :conta_destino %>
+    <%= f.label :conta_destino_id %><br />
+    <%= f.number_field :conta_destino_id %>
   </p>
   <p>
     <%= f.label :tipo %><br />

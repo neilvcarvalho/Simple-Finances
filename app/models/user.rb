@@ -17,14 +17,14 @@ class User < ActiveRecord::Base
 	def create_accounts
 		contas = ["Carteira", "Conta Corrente", "Poupança", "Cartão de Crédito"]
 		for conta in contas
-			Conta.create(:descricao => conta, :user_id => self.id)
+			Conta.create(descricao: conta, user_id: self.id, saldo: 0)
 		end
 	end
 
 	def create_categories
 		categorias = ["Diversão", "Contas de casa", "Mercado", "Gastos pessoais", "Estudos"]
 		for categoria in categorias
-			Categoria.create(:descricao => categoria, :user_id => self.id)
+			Categoria.create(descricao: categoria, user_id: self.id)
 		end
 	end
 end

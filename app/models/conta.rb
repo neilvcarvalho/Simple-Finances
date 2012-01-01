@@ -3,4 +3,5 @@ class Conta < ActiveRecord::Base
   belongs_to :user
   has_many :movimentacoes
   validates_presence_of :descricao
+  validates_presence_of :saldo
 end

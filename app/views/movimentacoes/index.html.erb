@@ -1,25 +1,20 @@
-<% title "Movimentacoes" %>
+<div id="movimentacao">
+	<%= form_for(@movimentacao, :remote => true, id: "{new_movimentacao_index}") do |f| %>
+		<%= f.text_field :date, :value => "Hoje", :size => 10, :id => "data_movimentacao" %>
+		<%= f.select :tipo, options_for_select(@tipos, :style => "font-size: 20px") %>
+		<%= f.number_field :quantia, size: 15 %>
+		com
+		<%= f.collection_select :categoria_id, @categorias, :id, :descricao %>
+		na conta
+		<%= f.collection_select :conta_id, @contas, :id, :descricao %>
+		<%= f.submit "Incluir", :id => "incluir_movimentacao" %>
+	<% end %>
+</div>
 
-<table>
-  <tr>
-    <th>Quantia</th>
-    <th>Categoria</th>
-    <th>Conta Origem</th>
-    <th>Conta Destino</th>
-    <th>Tipo</th>
-  </tr>
-  <% for movimentacao in @movimentacoes %>
-    <tr>
-      <td><%= movimentacao.quantia %></td>
-      <td><%= movimentacao.categoria_id %></td>
-      <td><%= movimentacao.conta_origem %></td>
-      <td><%= movimentacao.conta_destino %></td>
-      <td><%= movimentacao.tipo %></td>
-      <td><%= link_to "Show", movimentacao %></td>
-      <td><%= link_to "Edit", edit_movimentacao_path(movimentacao) %></td>
-      <td><%= link_to "Destroy", movimentacao, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
-
-<p><%= link_to "New Movimentacao", new_movimentacao_path %></p>
+<div id="movimentacoes">
+	<table id="tabela_movimentacoes">
+		<% for movimentacao in @movimentacoes %>
+			<%= linha_tabela_movimentacao(movimentacao) %>
+		<% end %>
+	</table>
+</div>

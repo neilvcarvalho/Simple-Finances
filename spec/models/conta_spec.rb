@@ -16,4 +16,9 @@ describe Conta do
 		@conta.descricao = nil
 		@conta.save.should be_false
 	end
+
+	it "should not save without a balance" do
+		@conta.saldo = nil
+		@conta.save.should be_false
+	end
 end
