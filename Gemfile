@@ -5,9 +5,9 @@ gem 'rails', '3.1.1'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 gem 'devise'
 gem 'cancan'
+gem 'heroku'
 
 
 # Gems used only for assets and not required
@@ -54,5 +54,6 @@ group :test, :development do
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'sqlite3'
 end
 gem "mocha", :group => :test
