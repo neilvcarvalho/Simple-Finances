@@ -8,7 +8,7 @@ gem 'rails', '3.1.1'
 gem 'devise'
 gem 'cancan'
 gem 'heroku'
-
+gem 'therubyracer'
 
 # Gems used only for assets and not required
 # in production environments by default.
