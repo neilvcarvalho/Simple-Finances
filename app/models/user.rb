@@ -7,9 +7,9 @@ class User < ActiveRecord::Base
 		 :recoverable, :rememberable, :trackable, :validatable
 
 	# Setup accessible (or protected) attributes for your model
-	attr_accessible :email, :password, :password_confirmation, :remember_me, :name
+	attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :users
 
-	has_many :contas
+	has_and_belongs_to_many :contas
 	has_many :categorias
 	has_many :movimentacoes
 	after_create :create_accounts, :create_categories
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 	def create_accounts
 		contas = ["Carteira", "Conta Corrente", "Poupança", "Cartão de Crédito"]
 		for conta in contas
-			Conta.create(descricao: conta, user_id: self.id, saldo: 0)
+			self.contas << Conta.create(descricao: conta, saldo: 0)
 		end
 	end
 

@@ -1,9 +1,9 @@
 SimpleFinances::Application.routes.draw do
   resources :movimentacoes
 
-  resources :categoria
+  resources :categorias
 
-  resources :conta
+  resources :contas
 
   devise_for :users
 

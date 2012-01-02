@@ -1,0 +1,8 @@
+<tr class="movimentacao" id="movimentacao-<%=movimentacao.id%>">
+	<td><%= movimentacao.date.strftime('%d/%m/%Y') %></td>
+	<td><%= movimentacao.nome_categoria %></td>
+	<td><%= number_to_currency(movimentacao.quantia) %></td>
+	<td><%= movimentacao.conta.descricao %></td>
+	<td><%= link_to('Deletar', movimentacao, :method => :delete, :remote => true, :confirm => 'Tem certeza?') %></td>
+	<td><%=%></td>
+</tr>

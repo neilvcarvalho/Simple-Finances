@@ -7,7 +7,7 @@ describe Conta do
 
 	it "should belong to an user" do
 		user = FactoryGirl.create(:user)
-		@conta.user = user
+		@conta.users << user
 		@conta.save
 		@conta.user.should be user
 	end

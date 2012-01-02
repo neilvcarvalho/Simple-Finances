@@ -2,9 +2,9 @@
 	<%= form_for(@movimentacao, :remote => true, id: "{new_movimentacao_index}") do |f| %>
 		<%= f.text_field :date, :value => "Hoje", :size => 10, :id => "data_movimentacao" %>
 		<%= f.select :tipo, options_for_select(@tipos, :style => "font-size: 20px") %>
-		<%= f.number_field :quantia, size: 15, :autocomplete => :off %>
+		<%= f.text_field :quantia, size: 15, :autocomplete => :off %>
 		com
-		<%= f.collection_select :categoria_id, @categorias, :id, :descricao %>
+		<%= f.collection_select :categoria_id, @categorias, :id, :descricao, include_blank: true %>
 		na conta
 		<%= f.collection_select :conta_id, @contas, :id, :descricao %>
 		<%= f.submit "Incluir", :id => "incluir_movimentacao", disable_with: "Incluindo..." %>
@@ -12,9 +12,5 @@
 </div>
 
 <div id="movimentacoes">
-	<table id="tabela_movimentacoes">
-		<% for movimentacao in @movimentacoes %>
-			<%= linha_tabela_movimentacao(movimentacao) %>
-		<% end %>
-	</table>
+	<%= render "movimentacoes", movimentacoes: @movimentacoes %>
 </div>

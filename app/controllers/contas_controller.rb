@@ -1,6 +1,6 @@
-class ContaController < ApplicationController
+class ContasController < ApplicationController
   def index
-    @conta = Conta.all
+    @contas = Conta.all
   end
 
   def show

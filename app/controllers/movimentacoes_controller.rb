@@ -2,7 +2,7 @@ class MovimentacoesController < ApplicationController
   def index
     @movimentacoes = Movimentacao.where(["conta_id in (?)",current_user.contas]).order("date desc, id desc").limit(10)
     @categorias = Categoria.find_all_by_user_id(current_user)
-    @contas = Conta.find_all_by_user_id(current_user)
+    @contas = current_user.contas
     @movimentacao = Movimentacao.new
     @tipos = [["gastei", "S"], ["ganhei", "E"]] #, ["transferi", "T"]]
   end
@@ -16,13 +16,13 @@ class MovimentacoesController < ApplicationController
   end
 
   def create
+    params[:movimentacao][:quantia].gsub!(",",".")
     @movimentacao = Movimentacao.new(params[:movimentacao])
     date = params[:movimentacao][:date]
     if date.present?
       date = date.split("/")
       if date.size == 1
         @movimentacao.date = Time.now.to_date if date[0] == "Hoje"
-        @movimentacao.date ||= 1.day.ago.to_date if date[0] == "Ontem"
       else
         @movimentacao.date = Time.new(date[2].to_i, date[1].to_i, date[0].to_i)
       end
@@ -57,6 +57,9 @@ class MovimentacoesController < ApplicationController
   def destroy
     @movimentacao = Movimentacao.find(params[:id])
     @movimentacao.destroy
-    redirect_to movimentacoes_url, :notice => "Successfully destroyed movimentacao."
+    respond_to do |format|
+      format.html { redirect_to movimentacoes_url, :notice => "Successfully destroyed movimentacao." }
+      format.js
+    end
   end
 end

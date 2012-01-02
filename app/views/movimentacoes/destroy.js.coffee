@@ -1,0 +1,1 @@
+$("#movimentacao-" + <%= @movimentacao.id %>).remove()
