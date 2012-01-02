@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 	has_many :contas
 	has_many :categorias
 	has_many :movimentacoes
-	after_save :create_accounts, :create_categories
+	after_create :create_accounts, :create_categories
 
 	def create_accounts
 		contas = ["Carteira", "Conta Corrente", "Poupança", "Cartão de Crédito"]
