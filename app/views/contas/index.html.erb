@@ -3,13 +3,11 @@
 <table>
   <tr>
     <th>Saldo</th>
-    <th>User</th>
     <th>Descricao</th>
   </tr>
   <% for conta in @contas %>
     <tr>
       <td><%= conta.saldo %></td>
-      <td><%= conta.user_id %></td>
       <td><%= conta.descricao %></td>
       <td><%= link_to "Show", conta %></td>
       <td><%= link_to "Edit", edit_conta_path(conta) %></td>

@@ -9,7 +9,7 @@ describe Conta do
 		user = FactoryGirl.create(:user)
 		@conta.users << user
 		@conta.save
-		@conta.user.should be user
+		@conta.users.should include(user)
 	end
 
 	it "should not save without a description" do

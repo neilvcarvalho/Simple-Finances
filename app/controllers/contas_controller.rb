@@ -1,6 +1,6 @@
 class ContasController < ApplicationController
   def index
-    @contas = Conta.all
+    @contas = current_user.contas
   end
 
   def show
@@ -13,6 +13,7 @@ class ContasController < ApplicationController
 
   def create
     @conta = Conta.new(params[:conta])
+    @conta.users << current_user
     if @conta.save
       redirect_to @conta, :notice => "Successfully created conta."
     else
@@ -26,6 +27,7 @@ class ContasController < ApplicationController
 
   def update
     @conta = Conta.find(params[:id])
+    @conta.users << current_user
     if @conta.update_attributes(params[:conta])
       redirect_to @conta, :notice  => "Successfully updated conta."
     else

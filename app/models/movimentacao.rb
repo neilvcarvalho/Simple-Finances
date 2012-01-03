@@ -16,8 +16,13 @@ class Movimentacao < ActiveRecord::Base
 	def atualiza_saldo_conta
 		total = 0
 		for mov in conta.movimentacoes
-			total += mov.quantia
+			total += mov.quantia if mov.tipo == "E"
+			total -= mov.quantia if mov.tipo == "S" || mov.tipo == "T"
+			conta_destino = Conta.find(mov.conta_destino_id)
+			conta_destino.saldo += mov.quantia if mov.tipo == "T"
+			conta_destino.save
 		end
 		conta.saldo = total
+		conta.save
 	end
 end

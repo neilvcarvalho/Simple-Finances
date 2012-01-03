@@ -1,6 +1,6 @@
 class CategoriasController < ApplicationController
   def index
-    @categorias = Categoria.all
+    @categorias = current_user.categorias
   end
 
   def show
