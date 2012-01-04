@@ -38,6 +38,6 @@ class ContasController < ApplicationController
   def destroy
     @conta = Conta.find(params[:id])
     @conta.destroy
-    redirect_to conta_url, :notice => "Successfully destroyed conta."
+    redirect_to contas_url, :notice => "Successfully destroyed conta."
   end
 end
