@@ -10,8 +10,7 @@
 		<%= f.submit "Incluir", :id => "incluir_movimentacao", disable_with: "Incluindo..." %>
 	<% end %>
 </div>
-
 <div id="movimentacoes">
 	<%= render "movimentacoes", movimentacoes: @movimentacoes %>
 </div>
-Saldo mensal: <%= number_to_currency @balance %> (<%=number_to_currency @per_day%>/dia)<br/>
+<span id="linha_saldo"><%= linha_saldo_user %></span>
