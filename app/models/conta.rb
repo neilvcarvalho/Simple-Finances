@@ -9,4 +9,9 @@ class Conta < ActiveRecord::Base
   def description_owner
   	"#{descricao} (#{owner.email})"
   end
+
+  def monthly_balance
+  	movimentacoes.where(["date >= ? and date <= ? and tipo = ?",Time.now.beginning_of_month,Time.now.end_of_month,"E"]).sum("quantia") -
+  	movimentacoes.where(["date >= ? and date <= ? and tipo = ?",Time.now.beginning_of_month,Time.now.end_of_month,"S"]).sum("quantia")
+  end
 end

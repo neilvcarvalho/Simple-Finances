@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 	has_many :categorias
 	has_many :movimentacoes
 	has_many :own_accounts, :class_name => "Conta", :foreign_key => "owner_id"
+	has_many :movimentacoes, :through => :contas
 	after_create :create_accounts, :create_categories
 
 	def create_accounts
@@ -27,5 +28,10 @@ class User < ActiveRecord::Base
 		for categoria in categorias
 			Categoria.create(descricao: categoria, user_id: self.id)
 		end
+	end
+
+	def monthly_balance
+		movimentacoes.where(["date >= ? and date <= ? and tipo = ?",Time.now.beginning_of_month,Time.now.end_of_month,"E"]).sum("quantia") -
+		movimentacoes.where(["date >= ? and date <= ? and tipo = ?",Time.now.beginning_of_month,Time.now.end_of_month,"S"]).sum("quantia")
 	end
 end

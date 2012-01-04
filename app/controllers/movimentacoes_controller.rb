@@ -8,6 +8,8 @@ class MovimentacoesController < ApplicationController
     @contas = current_user.contas
     @movimentacao = Movimentacao.new
     @tipos = [["gastei", "S"], ["ganhei", "E"]] #, ["transferi", "T"]]
+    @balance = current_user.monthly_balance
+    @per_day = @balance / (Time.now.end_of_month.day - Time.now.day)
   end
 
   def show
