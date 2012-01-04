@@ -1,7 +1,7 @@
 # coding: utf-8
 
 class ContasController < ApplicationController
-  before_filter :belongs_to_user, except: [:index]
+  before_filter :belongs_to_user, except: [:index, :new, :create]
   before_filter :user_is_main_owner, only: [:destroy]
 
   def index
