@@ -1,7 +1,7 @@
 # coding: utf-8
 
 class CategoriasController < ApplicationController
-  before_filter :belongs_to_user, except: [:index]
+  before_filter :belongs_to_user, except: [:index, :new, :create]
   def index
     @categorias = current_user.categorias
   end
