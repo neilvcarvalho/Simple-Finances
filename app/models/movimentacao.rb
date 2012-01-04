@@ -8,6 +8,7 @@ class Movimentacao < ActiveRecord::Base
 	validates_presence_of :date
 	validates_numericality_of :quantia, :greater_than => 0
 	after_save :atualiza_saldo_conta
+	before_destroy :update_balance_removal
 
 	def nome_categoria
 		categoria.try(:descricao) || "Sem categoria"
@@ -16,6 +17,12 @@ class Movimentacao < ActiveRecord::Base
 	def atualiza_saldo_conta
 		conta.saldo += quantia if tipo == "E"
 		conta.saldo -= quantia if ["S", "T"].include?(tipo)
+		conta.save
+	end
+
+	def update_balance_removal
+		conta.saldo -= quantia if tipo == "E"
+		conta.saldo += quantia if ["S", "T"].include?(tipo)
 		conta.save
 	end
 end
