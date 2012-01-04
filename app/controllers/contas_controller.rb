@@ -1,4 +1,8 @@
+# coding: utf-8
+
 class ContasController < ApplicationController
+  before_filter :belongs_to_user, except: [:index]
+
   def index
     @contas = current_user.contas
   end
@@ -39,5 +43,14 @@ class ContasController < ApplicationController
     @conta = Conta.find(params[:id])
     @conta.destroy
     redirect_to contas_url, :notice => "Successfully destroyed conta."
+  end
+
+  private
+  def belongs_to_user
+    conta = Conta.find(params[:id])
+    unless current_user.contas.include?(conta)
+      flash[:error] = "Esta conta não te pertence!"
+      redirect_to contas_url  
+    end
   end
 end

@@ -1,4 +1,7 @@
+# coding: utf-8
+
 class MovimentacoesController < ApplicationController
+  before_filter :belongs_to_user, except: [:index]
   def index
     @movimentacoes = Movimentacao.where(["conta_id in (?)",current_user.contas]).order("date desc, id desc").limit(10)
     @categorias = Categoria.find_all_by_user_id(current_user)
@@ -60,6 +63,15 @@ class MovimentacoesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to movimentacoes_url, :notice => "Successfully destroyed movimentacao." }
       format.js
+    end
+  end
+
+  private
+  def belongs_to_user
+    movimentacao = Movimentacao.find(params[:id])
+    unless movimentacao.user == current_user
+      flash[:error] = "Esta movimentação não te pertence!"
+      redirect_to movimentacoes_url  
     end
   end
 end

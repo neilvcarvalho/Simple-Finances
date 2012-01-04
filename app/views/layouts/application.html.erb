@@ -15,5 +15,6 @@
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>
     </div>
+    <%= link_to 'Logout', '/users/sign_out', :method => :delete %>
   </body>
 </html>

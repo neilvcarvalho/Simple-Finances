@@ -1,4 +1,7 @@
+# coding: utf-8
+
 class CategoriasController < ApplicationController
+  before_filter :belongs_to_user, except: [:index]
   def index
     @categorias = current_user.categorias
   end
@@ -39,5 +42,14 @@ class CategoriasController < ApplicationController
     @categoria = Categoria.find(params[:id])
     @categoria.destroy
     redirect_to categorias_url, :notice => "Successfully destroyed categoria."
+  end
+
+  private
+  def belongs_to_user
+    categoria = Categoria.find(params[:id])
+    unless categoria.user == current_user
+      flash[:error] = "Esta categoria não te pertence!"
+      redirect_to categoriass_url  
+    end
   end
 end
