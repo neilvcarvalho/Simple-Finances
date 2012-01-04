@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 	def create_accounts
 		contas = ["Carteira", "Conta Corrente", "Poupança", "Cartão de Crédito"]
 		for conta in contas
-			self.contas << Conta.create(descricao: conta, saldo: 0)
+			self.contas << Conta.create(descricao: conta, saldo: 0, owner: self)
 		end
 	end
 

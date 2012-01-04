@@ -2,6 +2,7 @@
 
 class ContasController < ApplicationController
   before_filter :belongs_to_user, except: [:index]
+  before_filter :user_is_main_owner, only: [:destroy]
 
   def index
     @contas = current_user.contas
@@ -18,6 +19,7 @@ class ContasController < ApplicationController
   def create
     @conta = Conta.new(params[:conta])
     @conta.users << current_user
+    @conta.owner = current_user
     if @conta.save
       redirect_to @conta, :notice => "Successfully created conta."
     else
@@ -31,7 +33,6 @@ class ContasController < ApplicationController
 
   def update
     @conta = Conta.find(params[:id])
-    @conta.users << current_user
     if @conta.update_attributes(params[:conta])
       redirect_to @conta, :notice  => "Successfully updated conta."
     else
@@ -50,6 +51,14 @@ class ContasController < ApplicationController
     conta = Conta.find(params[:id])
     unless current_user.contas.include?(conta)
       flash[:error] = "Esta conta não te pertence!"
+      redirect_to contas_url  
+    end
+  end
+
+  def user_is_main_owner
+    conta = Conta.find(params[:id])
+    unless conta.owner == current_user
+      flash[:error] = "Você não é o dono desta conta."
       redirect_to contas_url  
     end
   end

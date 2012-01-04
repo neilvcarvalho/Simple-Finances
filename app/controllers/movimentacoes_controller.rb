@@ -1,7 +1,7 @@
 # coding: utf-8
 
 class MovimentacoesController < ApplicationController
-  before_filter :belongs_to_user, except: [:index]
+  before_filter :belongs_to_user, except: [:index, :create]
   def index
     @movimentacoes = Movimentacao.where(["conta_id in (?)",current_user.contas]).order("date desc, id desc").limit(10)
     @categorias = Categoria.find_all_by_user_id(current_user)
@@ -51,7 +51,7 @@ class MovimentacoesController < ApplicationController
   def update
     @movimentacao = Movimentacao.find(params[:id])
     if @movimentacao.update_attributes(params[:movimentacao])
-      redirect_to @movimentacao, :notice  => "Successfully updated movimentacao."
+      redirect_to @movimentacao, :notice  => "Movimentação alterada com sucesso."
     else
       render :action => 'edit'
     end
@@ -69,7 +69,7 @@ class MovimentacoesController < ApplicationController
   private
   def belongs_to_user
     movimentacao = Movimentacao.find(params[:id])
-    unless movimentacao.user == current_user
+    unless current_user.contas.include?(movimentacao.conta)
       flash[:error] = "Esta movimentação não te pertence!"
       redirect_to movimentacoes_url  
     end
