@@ -73,3 +73,14 @@ a {
 .error_messages ul {
   margin: 0;
 }
+#tabela_movimentacoes {
+  border: 0;
+  width: 100%;
+  border-collapse:collapse;
+}
+.movimentacao_S {
+  background-color:#FFB8B8;
+}
+.movimentacao_E {
+  background-color:#B8FFBD;
+}

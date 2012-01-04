@@ -5,4 +5,8 @@ class Conta < ActiveRecord::Base
   validates_presence_of :descricao
   validates_presence_of :saldo
   belongs_to :owner, :class_name => "User"
+
+  def description_owner
+  	"#{descricao} (#{owner.email})"
+  end
 end
