@@ -19,7 +19,6 @@ FactoryGirl.define do
 		association :categoria
 		quantia 100
 		association :conta
-		conta_destino_id 1
 		tipo "S" # E, S ou T
 		date Time.now
 	end

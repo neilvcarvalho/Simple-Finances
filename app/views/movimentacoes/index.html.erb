@@ -7,6 +7,10 @@
 		<%= f.collection_select :categoria_id, @categorias, :id, :descricao, include_blank: true %>
 		na conta
 		<%= f.collection_select :conta_id, @contas, :id, :description_owner %>
+		<div id="">
+		para a conta
+		<%= f.collection_select :conta_destino_id, @contas, :id, :description_owner, include_blank: true %>
+		</div>
 		<%= f.submit "Incluir", :id => "incluir_movimentacao", disable_with: "Incluindo..." %>
 	<% end %>
 </div>

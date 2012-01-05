@@ -7,7 +7,7 @@ class MovimentacoesController < ApplicationController
     @categorias = Categoria.find_all_by_user_id(current_user)
     @contas = current_user.contas
     @movimentacao = Movimentacao.new
-    @tipos = [["gastei", "S"], ["ganhei", "E"]] #, ["transferi", "T"]]
+    @tipos = [["gastei", "S"], ["ganhei", "E"], ["transferi", "T"]]
     @balance = current_user.monthly_balance
     @per_day = @balance / (Time.now.end_of_month.day - Time.now.day)
   end

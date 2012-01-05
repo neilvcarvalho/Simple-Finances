@@ -21,4 +21,14 @@ describe Conta do
 		@conta.saldo = nil
 		@conta.save.should be_false
 	end
+
+	it "should calculate its monthly balance" do
+		@conta.save
+		conta2 = Factory.create(:conta)
+		FactoryGirl.create(:movimentacao, quantia: 1000, conta: @conta, tipo: "E")
+		FactoryGirl.create(:movimentacao, quantia: 500, conta: @conta, tipo: "S")
+		FactoryGirl.create(:movimentacao, quantia: 200, conta: @conta, tipo: "T", conta_destino_id: conta2.id)
+		@conta.monthly_balance.to_f.should == 300
+		conta2.monthly_balance.to_f.should == 200
+	end
 end

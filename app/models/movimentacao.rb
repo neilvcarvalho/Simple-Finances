@@ -15,13 +15,19 @@ class Movimentacao < ActiveRecord::Base
 	end
 
 	def atualiza_saldo_conta
+		conta_destino = Conta.find_by_id(conta_destino_id)
 		conta.saldo += quantia if tipo == "E"
+		conta_destino.saldo += quantia if conta_destino.present?
+		conta_destino.save if conta_destino.present?
 		conta.saldo -= quantia if ["S", "T"].include?(tipo)
 		conta.save
 	end
 
 	def update_balance_removal
+		conta_destino = Conta.find_by_id(conta_destino_id)
 		conta.saldo -= quantia if tipo == "E"
+		conta_destino.saldo -= quantia if conta_destino.present?
+		conta_destino.save if conta_destino.present?
 		conta.saldo += quantia if ["S", "T"].include?(tipo)
 		conta.save
 	end
