@@ -5,11 +5,11 @@ class ContasController < ApplicationController
   before_filter :user_is_main_owner, only: [:destroy]
 
   def index
-    @contas = current_user.contas
+    @contas = ContaDecorator.decorate(current_user.contas)
   end
 
   def show
-    @conta = Conta.find(params[:id])
+    @conta = ContaDecorator.find(params[:id])
   end
 
   def new

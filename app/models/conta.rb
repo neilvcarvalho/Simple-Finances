@@ -6,9 +6,6 @@ class Conta < ActiveRecord::Base
   validates_presence_of :saldo
   belongs_to :owner, :class_name => "User"
 
-  def description_owner
-  	"#{descricao} (#{owner.email})"
-  end
 
   def monthly_balance
     entrada        = movimentacoes.where(["date >= ? and date <= ? and tipo = ?",Time.now.beginning_of_month,Time.now.end_of_month,"E"]).sum("quantia")
