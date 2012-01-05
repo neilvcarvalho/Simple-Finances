@@ -1,8 +1,16 @@
 <tr class="movimentacao movimentacao_<%=movimentacao.tipo%>" id="movimentacao-<%=movimentacao.id%>">
 	<td><%= movimentacao.date.strftime('%d/%m/%Y') %></td>
-	<td><%= movimentacao.nome_categoria %></td>
+	<% if movimentacao.tipo != "T" %>
+		<td><%= movimentacao.nome_categoria %></td>
+	<% else %>
+		<td>Transferência</td>
+	<% end %>
 	<td><%= number_to_currency(movimentacao.quantia) %></td>
-	<td><%= movimentacao.conta.descricao %></td>
+	<% if movimentacao.tipo != "T" %>
+		<td><%= movimentacao.conta.descricao %></td>
+	<% else %>
+		<td><%= movimentacao.conta.descricao %> - <%= Conta.find_by_id(movimentacao.conta_destino_id).try(:descricao) %> </td>
+	<% end %>
 	<td><%= link_to('X', movimentacao, :method => :delete, :remote => true, :confirm => 'Tem certeza?') %></td>
 	<td><%=%></td>
 </tr>

@@ -3,14 +3,18 @@
 		<%= f.text_field :date, :value => "Hoje", :size => 10, :id => "data_movimentacao" %>
 		<%= f.select :tipo, options_for_select(@tipos, :style => "font-size: 20px") %>
 		<%= f.text_field :quantia, size: 15, :autocomplete => :off %>
+		<span id="category_field">
 		com
 		<%= f.collection_select :categoria_id, @categorias, :id, :descricao, include_blank: true %>
-		na conta
+		</span>
+		<span id="account_fields">
+		<span id="account_from_in">na conta</span>
 		<%= f.collection_select :conta_id, @contas, :id, :description_owner %>
-		<div id="">
+		</span>
+		<span id="transfer_fields" style="display:none">
 		para a conta
 		<%= f.collection_select :conta_destino_id, @contas, :id, :description_owner, include_blank: true %>
-		</div>
+		</span>
 		<%= f.submit "Incluir", :id => "incluir_movimentacao", disable_with: "Incluindo..." %>
 	<% end %>
 </div>
