@@ -2,6 +2,7 @@
 	<%= form_for(@movimentacao, :remote => true, id: "{new_movimentacao_index}") do |f| %>
 		<%= f.text_field :date, :value => "Hoje", :size => 10, :id => "data_movimentacao" %>
 		<%= f.select :tipo, options_for_select(@tipos, :style => "font-size: 20px") %>
+		R$
 		<%= f.text_field :quantia, size: 15, :autocomplete => :off %>
 		<span id="category_field">
 		com
