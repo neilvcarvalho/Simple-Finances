@@ -3,3 +3,4 @@
 		<%= linha_tabela_movimentacao(movimentacao) %>
 	<% end %>
 </table>
+<%= will_paginate movimentacoes, previous_label: h("<"), next_label: h(">") %>
