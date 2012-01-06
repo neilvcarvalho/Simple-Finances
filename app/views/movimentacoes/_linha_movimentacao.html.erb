@@ -1,5 +1,7 @@
 <tr class="movimentacao movimentacao_<%=movimentacao.tipo%>" id="movimentacao-<%=movimentacao.id%>">
-	<td style="width: 100px"><%= movimentacao.date.strftime('%d/%m/%Y') %></td>
+	<td style="width:82px" class="linha_mov_data<%= " futuro" if movimentacao.date > Time.now.to_date%>">
+	<%= movimentacao.date.strftime('%d/%m/%Y') %>
+	</td>
 	<% if movimentacao.tipo != "T" %>
 		<td><%= movimentacao.nome_categoria %></td>
 	<% else %>
@@ -11,6 +13,6 @@
 	<% else %>
 		<td><%= movimentacao.conta.descricao %> - <%= Conta.find_by_id(movimentacao.conta_destino_id).try(:descricao) %> </td>
 	<% end %>
-	<td style="width:10px"><%= link_to('X', movimentacao, :method => :delete, :remote => true, :confirm => 'Tem certeza?') %></td>
+	<td style="width:15px"><%= link_to('X', movimentacao, class: "ui-icon ui-icon-circle-close", :method => :delete, :remote => true, :confirm => 'Tem certeza?') %></td>
 	<td><%=%></td>
 </tr>

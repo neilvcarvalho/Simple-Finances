@@ -1,4 +1,5 @@
 jQuery ->
+	$("#tabs").tabs()
 	$("#incluir_movimentacao").button()
 	$("#data_movimentacao").datepicker({ gotoCurrent: true, showButtonPanel: true })
 	$("#movimentacao_tipo").click ->
