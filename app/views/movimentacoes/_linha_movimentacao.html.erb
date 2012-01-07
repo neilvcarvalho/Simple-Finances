@@ -9,9 +9,9 @@
 	<% end %>
 	<td><%= number_to_currency(movimentacao.quantia) %></td>
 	<% if movimentacao.tipo != "T" %>
-		<td><%= movimentacao.conta.descricao %></td>
+		<td><%= ContaDecorator.decorate(movimentacao.conta).description_owner %></td>
 	<% else %>
-		<td><%= movimentacao.conta.descricao %> - <%= Conta.find_by_id(movimentacao.conta_destino_id).try(:descricao) %> </td>
+		<td><%= ContaDecorator.decorate(movimentacao.conta).description_owner %> - <%= ContaDecorator.decorate(Conta.find_by_id(movimentacao.conta_destino_id)).try(:description_owner) %> </td>
 	<% end %>
 	<td style="width:15px"><%= link_to('X', movimentacao, class: "ui-icon ui-icon-circle-close", :method => :delete, :remote => true, :confirm => 'Tem certeza?') %></td>
 	<td><%=%></td>
