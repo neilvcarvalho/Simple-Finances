@@ -11,6 +11,10 @@ class Movimentacao < ActiveRecord::Base
 	before_destroy :update_balance_removal
 
 	def atualiza_saldo_conta
+		conta.update_attribute(:saldo, conta.balance)
+	end
+	
+	def atualiza_saldo_conta2
 		conta_destino = Conta.find_by_id(conta_destino_id)
 		conta.saldo += quantia if tipo == "E"
 		conta_destino.saldo += quantia if conta_destino.present?
