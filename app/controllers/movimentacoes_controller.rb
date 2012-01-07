@@ -5,7 +5,7 @@ class MovimentacoesController < ApplicationController
   def index
     @movimentacoes = Movimentacao.where(["conta_id in (?)",current_user.contas]).order("date desc, id desc").limit(10)
     @categorias = Categoria.find_all_by_user_id(current_user)
-    @contas = ContaDecorator.decorate(current_user.contas)
+    @contas = ContaDecorator.decorate(current_user.contas.order("owner_id, descricao"))
     @movimentacao = Movimentacao.new
     @tipos = [["gastei", "S"], ["ganhei", "E"], ["transferi", "T"]]
     @balance = current_user.monthly_balance

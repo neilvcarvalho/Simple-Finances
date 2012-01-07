@@ -6,7 +6,7 @@
   <% for conta in @contas %>
     <tr>
       <td><%= conta.saldo %></td>
-      <td><%= conta.descricao %></td>
+      <td><%= conta.description_owner %></td>
       <td><%= link_to "Show", conta %></td>
       <td><%= link_to "Edit", edit_conta_path(conta) %></td>
       <td><%= link_to "Destroy", conta, :confirm => 'Are you sure?', :method => :delete %></td>
