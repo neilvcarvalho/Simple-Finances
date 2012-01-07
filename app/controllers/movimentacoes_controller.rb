@@ -3,8 +3,8 @@
 class MovimentacoesController < ApplicationController
   before_filter :belongs_to_user, except: [:index, :create]
   def index
-    @movimentacoes = Movimentacao.where(["conta_id in (?)",current_user.contas]).order("date desc, id desc").page(params[:page]).per_page(10)
-    @categorias = Categoria.find_all_by_user_id(current_user)
+    @movimentacoes = MovimentacaoDecorator.decorate(Movimentacao.where(["conta_id in (?)",current_user.contas]).order("date desc, id desc").page(params[:page]).per_page(10))
+    @categorias = CategoriaDecorator.find_all_by_user_id(current_user)
     @contas = ContaDecorator.decorate(current_user.contas.order("owner_id, descricao"))
     @movimentacao = Movimentacao.new
     @tipos = [["gastei", "S"], ["ganhei", "E"], ["transferi", "T"]]

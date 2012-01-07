@@ -10,10 +10,6 @@ class Movimentacao < ActiveRecord::Base
 	after_save :atualiza_saldo_conta
 	before_destroy :update_balance_removal
 
-	def nome_categoria
-		categoria.try(:descricao) || "Sem categoria"
-	end
-
 	def atualiza_saldo_conta
 		conta_destino = Conta.find_by_id(conta_destino_id)
 		conta.saldo += quantia if tipo == "E"
