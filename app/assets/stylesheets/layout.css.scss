@@ -1,6 +1,52 @@
+.pagination {
+  background: white;
+  cursor: default;
+  height: 22px;
+  a, span, em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px;
+  }
+  .disabled {
+    color: #999999;
+    border: 1px solid #dddddd;
+  }
+  .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #49A005;
+    color: white;
+    border: 1px solid #49A005;
+  }
+  a {
+    text-decoration: none;
+    color: #49A005;
+    border: 1px solid #49A005;
+    &:hover, &:focus {
+      color: #000033;
+      border-color: #000033;
+    }
+  }
+  .page_info {
+    background: #49A005;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center;
+    b {
+      color: #000033;
+      background: #49A005 + 60;
+      padding: 0.1em 0.25em;
+    }
+  }
+}
+
 body {
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
+  background-color: #ddd;
 }
 
 a img {
@@ -20,7 +66,7 @@ a {
 #container {
   width: 75%;
   margin: 0 auto;
-  background-color: #FFF;
+  background-color: none;
   padding: 20px 40px;
   /*border: solid 1px black;*/
   margin-top: 20px;
