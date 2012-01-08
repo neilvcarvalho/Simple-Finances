@@ -1,17 +1,12 @@
-<table>
-  <tr>
-    <th>Saldo</th>
-    <th>Descricao</th>
-  </tr>
+<table id="accounts_table" class="rounded_table">
   <% for conta in @contas %>
-    <tr>
-      <td><%= conta.saldo %></td>
+    <tr class="<%=cycle('line_odd','line_even')%>">
+      <td style="width: 100px"><%= number_to_currency conta.saldo %></td>
       <td><%= conta.description_owner %></td>
-      <td><%= link_to "Show", conta %></td>
-      <td><%= link_to "Edit", edit_conta_path(conta) %></td>
-      <td><%= link_to "Destroy", conta, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td style="width:15px"><%= link_to('X', conta, class: "ui-icon ui-icon-circle-close", :method => :delete, :remote => true, :confirm => "Tem certeza que deseja apagar a conta #{conta.descricao}?") %></td>
     </tr>
+  
   <% end %>
 </table>
 
-<p><%= link_to "New Conta", new_conta_path %></p>
+<p><%= link_to "Nova conta", new_conta_path %></p>

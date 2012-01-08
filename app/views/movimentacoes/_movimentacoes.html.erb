@@ -1,6 +1,7 @@
-<table id="tabela_movimentacoes">
+<table id="tabela_movimentacoes" class="rounded_table">
 	<% for movimentacao in movimentacoes %>
 		<%= linha_tabela_movimentacao(movimentacao) %>
 	<% end %>
 </table>
+<br/>
 <%= will_paginate movimentacoes, previous_label: h("<"), next_label: h(">") %>

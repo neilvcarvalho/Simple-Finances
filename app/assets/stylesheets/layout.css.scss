@@ -118,19 +118,11 @@ a {
 .error_messages ul {
   margin: 0;
 }
-#tabela_movimentacoes {
-  border: 0;
-  width: 100%;
-  border-collapse:collapse;
-}
 .movimentacao_S {
-  background-color:#FFB8B8;
 }
 .movimentacao_E {
-  background-color:#B8FFBD;
 }
 .movimentacao_T {
-  background-color:#ADEBFF;
 }
 .linha_mov_data.futuro {
   padding-left: 27px;
@@ -138,3 +130,28 @@ a {
   background-repeat: no-repeat;
 }
 .linha_mov_data { text-align:right;padding-right:10px;}
+
+#tabela_movimentacoes, #accounts_table {
+  border: 0px solid none;
+  width: 100%;
+  border-collapse:collapse;
+  td{padding:5px 10px;}
+}
+.line_odd {
+  background-color: #EEE;
+}
+.line_even {
+  background-color: #FFF;
+}
+.rounded_table tr:first-child td:first-child {
+  border-top-left-radius: 6px;
+}
+.rounded_table tr:first-child td:last-child {
+  border-top-right-radius: 6px;
+}
+.rounded_table tr:last-child td:first-child {
+  border-bottom-left-radius: 6px;
+}
+.rounded_table tr:last-child td:last-child {
+  border-bottom-right-radius: 6px;
+}
