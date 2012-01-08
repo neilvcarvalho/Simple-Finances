@@ -4,9 +4,9 @@
 	<%= movimentacao.date.strftime('%d/%m/%Y') %>
 	</td>
 	<% if movimentacao.tipo != "T" %>
-		<td><%= movimentacao.nome_categoria %></td>
+		<td><%= movimentacao.nome_categoria %> <%= image_tag("plus.png",title: movimentacao.comment) unless movimentacao.comment.blank?%></td>
 	<% else %>
-		<td>Transferência</td>
+		<td>Transferência <%= image_tag("plus.png",title: movimentacao.comment) unless movimentacao.comment.blank?%></td>
 	<% end %>
 	<td><%= number_to_currency(movimentacao.quantia) %></td>
 	<% if movimentacao.tipo != "T" %>

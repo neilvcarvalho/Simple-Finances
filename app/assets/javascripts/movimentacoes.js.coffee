@@ -11,3 +11,6 @@ jQuery ->
 			$("#transfer_fields").hide()
 			$("#category_field").show()
 			$("#account_from_in").text("na conta")
+			$("#movimentacao_conta_destino_id").val('')
+	$("#toggle_comment").click ->
+		$("#comment").toggle()

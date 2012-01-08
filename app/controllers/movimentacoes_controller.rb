@@ -23,6 +23,7 @@ class MovimentacoesController < ApplicationController
   def create
     params[:movimentacao][:quantia].gsub!(",",".")
     @movimentacao = Movimentacao.new(params[:movimentacao])
+    @movimentacao.comment = params[:movimentacao][:comment]
     date = params[:movimentacao][:date]
     if date.present?
       date = date.split("/")

@@ -22,7 +22,11 @@
 				para a conta
 				<%= f.collection_select :conta_destino_id, @contas, :id, :description_owner, include_blank: true %>
 				</span>
+				<%= image_tag("plus.png", id: "toggle_comment", style: "cursor:pointer") %>
 				<%= f.submit "Incluir", :id => "incluir_movimentacao", disable_with: "Incluindo..." %>
+				<div id="comment" style="display:none">
+					<%= f.text_area :comment, size: "100x2" %>
+				</div>
 			<% end %>
 		</div>
 		<div id="movimentacoes">
