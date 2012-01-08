@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
 
 	has_and_belongs_to_many :contas
 	has_many :categorias
-	has_many :movimentacoes
 	has_many :own_accounts, :class_name => "Conta", :foreign_key => "owner_id"
 	has_many :movimentacoes, :through => :contas
 	after_create :create_accounts, :create_categories

@@ -1,5 +1,5 @@
 class Movimentacao < ActiveRecord::Base
-	attr_accessible :quantia, :categoria_id, :conta_id, :conta_destino_id, :tipo, :date, :comment
+	attr_accessible :quantia, :categoria_id, :conta_id, :conta_destino_id, :tipo, :date, :comment, :user_id
 	belongs_to :user
 	belongs_to :categoria
 	belongs_to :conta
