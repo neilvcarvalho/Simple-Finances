@@ -119,13 +119,17 @@ a {
   margin: 0;
 }
 .movimentacao_S {
+  color: red;
 }
 .movimentacao_E {
+  color:green;
 }
 .movimentacao_T {
 }
+.linha_mov_data {
+  width:90px;
+}
 .linha_mov_data.futuro {
-  padding-left: 27px;
   background-image: url(/assets/calendar.png);
   background-repeat: no-repeat;
 }

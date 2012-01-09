@@ -1,5 +1,5 @@
-<tr class="movimentacao movimentacao_<%=movimentacao.tipo%>" id="movimentacao-<%=movimentacao.id%>">
-	<td style="width:82px" class="linha_mov_data<%= " futuro" if movimentacao.date > Time.now.to_date%>">
+<tr class="movimentacao" id="movimentacao-<%=movimentacao.id%>">
+	<td class="linha_mov_data<%= " futuro" if movimentacao.date > Time.now.to_date%>">
 	<% movimentacao = MovimentacaoDecorator.decorate(movimentacao) %>
 	<%= movimentacao.date.strftime('%d/%m/%Y') %>
 	</td>
@@ -8,7 +8,7 @@
 	<% else %>
 		<td>Transferência <%= image_tag("plus.png",title: movimentacao.comment) unless movimentacao.comment.blank?%></td>
 	<% end %>
-	<td><%= number_to_currency(movimentacao.quantia) %></td>
+	<td class="movimentacao_<%=movimentacao.tipo%>"><%= number_to_currency(movimentacao.quantia) %></td>
 	<% if movimentacao.tipo != "T" %>
 		<td><%= ContaDecorator.decorate(movimentacao.conta).description_owner %></td>
 	<% else %>
