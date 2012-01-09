@@ -1,5 +1,5 @@
 class Movimentacao < ActiveRecord::Base
-	attr_accessible :quantia, :categoria_id, :conta_id, :conta_destino_id, :tipo, :date, :comment, :user_id
+	attr_accessible :quantia, :categoria_id, :conta_id, :conta_destino_id, :tipo, :date
 	belongs_to :user
 	belongs_to :categoria
 	belongs_to :conta
@@ -10,13 +10,11 @@ class Movimentacao < ActiveRecord::Base
 	after_save :atualiza_saldo_conta
 	before_destroy :update_balance_removal
 
-	def atualiza_saldo_conta
-		conta_destino = Conta.find_by_id(conta_destino_id)
-		conta.update_attribute(:saldo, conta.balance)
-		conta_destino.update_attribute(:saldo, conta_destino.balance) if conta_destino.present?
+	def nome_categoria
+		categoria.try(:descricao) || "Sem categoria"
 	end
-	
-	def atualiza_saldo_conta2
+
+	def atualiza_saldo_conta
 		conta_destino = Conta.find_by_id(conta_destino_id)
 		conta.saldo += quantia if tipo == "E"
 		conta_destino.saldo += quantia if conta_destino.present?

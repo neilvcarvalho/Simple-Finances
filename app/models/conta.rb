@@ -13,11 +13,4 @@ class Conta < ActiveRecord::Base
     transferencia  = Movimentacao.where(["date >= ? and date <= ? and tipo = ? and conta_destino_id = ?",Time.now.beginning_of_month,Time.now.end_of_month,"T", self.id]).sum("quantia")
     entrada + transferencia - saida
   end
-
-  def balance
-    entrada        = movimentacoes.where(["tipo = ?","E"]).sum("quantia")
-    saida          = movimentacoes.where(["tipo in (?)",["S","T"]]).sum("quantia")
-    transferencia  = Movimentacao.where(["tipo = ? and conta_destino_id = ?","T", self.id]).sum("quantia")
-    entrada + transferencia - saida
-  end
 end
