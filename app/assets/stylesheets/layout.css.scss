@@ -132,10 +132,11 @@ a {
 .linha_mov_data.futuro {
   background-image: url(/assets/calendar.png);
   background-repeat: no-repeat;
+  background-position: right center;
 }
-.linha_mov_data { text-align:right;padding-right:10px;}
+.linha_mov_data { text-align:left;padding-right:10px;}
 
-#tabela_movimentacoes, #accounts_table {
+#tabela_movimentacoes, #accounts_table, #categories_table {
   border: 0px solid none;
   width: 100%;
   border-collapse:collapse;
