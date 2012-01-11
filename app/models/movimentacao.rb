@@ -12,6 +12,8 @@ class Movimentacao < ActiveRecord::Base
 	scope :income, where("tipo = 'E'")
 	scope :outcome, where("tipo = 'S'")
 	scope :transfers, where("tipo = 'T'")
+	scope :this_month, Movimentacao.where(["date >= ? and date <= ?",Time.now.beginning_of_month,Time.now.end_of_month])
+	scope :today, Movimentacao.where(["date = ?",Time.now.to_date])
 
 	def atualiza_saldo_conta
 		conta_destino = Conta.find_by_id(conta_destino_id)

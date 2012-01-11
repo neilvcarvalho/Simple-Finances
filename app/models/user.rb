@@ -30,9 +30,9 @@ class User < ActiveRecord::Base
 	end
 
 	def monthly_balance
-		Movimentacao.where(["date >= ? and date <= ? and tipo = ? and conta_id in (?)",Time.now.beginning_of_month,Time.now.end_of_month,"E", contas]).sum("quantia") -
-		Movimentacao.where(["date >= ? and date <= ? and tipo in (?) and conta_id in (?)",Time.now.beginning_of_month,Time.now.end_of_month,["S","T"], contas]).sum("quantia") +
-		Movimentacao.where(["date >= ? and date <= ? and tipo = ? and conta_destino_id in (?)",Time.now.beginning_of_month,Time.now.end_of_month,"T", contas]).sum("quantia")
+		Movimentacao.where(["tipo = ? and conta_id in (?)","E", contas]).this_month.sum("quantia") -
+		Movimentacao.where(["tipo in (?) and conta_id in (?)",["S","T"], contas]).this_month.sum("quantia") +
+		Movimentacao.where(["tipo = ? and conta_destino_id in (?)","T", contas]).this_month.sum("quantia")
 	end
 
 	def daily_balance
