@@ -1,9 +1,9 @@
 <table class="rounded_table" id="categories_table">
-  <% for categoria in @categorias %>
-    <tr class="<%=cycle("line_odd","line_even")%>">
-      <td style="width: 90px" title="Saldo da categoria <%= categoria.descricao %> neste mês"><%= number_to_currency categoria.monthly_balance %></td>
-      <td><%= categoria.descricao %></td>
-      <td style="width:15px"><%= link_to('X', categoria, class: "ui-icon ui-icon-circle-close", :method => :delete, :remote => true, :confirm => "Tem certeza que deseja apagar a categoria #{categoria.descricao}?") %></td>
-    </tr>
-  <% end %>
+	<% for categoria in @categorias %>
+		<tr class="<%=cycle("line_odd","line_even")%>">
+			<td style="width: 90px" title="Saldo da categoria <%= categoria.descricao %> neste mês"><%= number_to_currency categoria.monthly_balance %></td>
+			<td><%= categoria.descricao %></td>
+			<td style="width:15px"><%= link_to('X', categoria, class: "ui-icon ui-icon-circle-close", :method => :delete, :remote => true, :confirm => "Tem certeza que deseja apagar a categoria #{categoria.descricao}?") %></td>
+		</tr>
+	<% end %>
 </table>
