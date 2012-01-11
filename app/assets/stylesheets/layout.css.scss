@@ -42,54 +42,41 @@
     }
   }
 }
-
+.ui-widget { font-family: Helvetica, Arial, Verdana; }
 body {
-  font-family: Verdana, Helvetica, Arial;
+  font-family: Helvetica, Arial, Verdana;
   font-size: 14px;
-  background-color: #ddd;
-}
-
-a img {
-  border: none;
-}
+  background-color: #ddd; }
 
 a {
   color: #0000FF;
-}
+  img {
+    border: none; } }
 
 .clear {
   clear: both;
   height: 0;
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 #container {
-  width: 75%;
+  width: 960px;
   margin: 0 auto;
-  background-color: none;
   padding: 20px 40px;
-  /*border: solid 1px black;*/
-  margin-top: 20px;
-}
+  margin-top: 20px; }
 
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
-  margin: 10px 0;
-}
+  margin: 10px 0; }
 
 #flash_notice {
   background-color: #CFC;
-  border: solid 1px #6C6;
-}
+  border: solid 1px #6C6; }
 
 #flash_error, #flash_alert {
   background-color: #FCC;
-  border: solid 1px #C66;
-}
+  border: solid 1px #C66; }
 
-.fieldWithErrors {
-  display: inline;
-}
+.fieldWithErrors { display: inline; }
 
 .error_messages {
   width: 400px;
@@ -99,32 +86,22 @@ a {
   margin-bottom: 20px;
   background-color: #f0f0f0;
   font-size: 12px;
-}
+  p {  margin: 8px 10px; }
+  ul { margin: 0; }
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 10px;
+    font-size: 12px;
+    margin: 0;
+    background-color: #c00;
+    color: #fff; } }
 
-.error_messages h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 10px;
-  font-size: 12px;
-  margin: 0;
-  background-color: #c00;
-  color: #fff;
-}
-
-.error_messages p {
-  margin: 8px 10px;
-}
-
-.error_messages ul {
-  margin: 0;
-}
 .movimentacao_S {
   color: red;
 }
 .movimentacao_E {
   color:green;
-}
-.movimentacao_T {
 }
 .linha_mov_data {
   width:90px;
@@ -148,15 +125,15 @@ a {
 .line_even {
   background-color: #FFF;
 }
-.rounded_table tr:first-child td:first-child {
-  border-top-left-radius: 6px;
-}
-.rounded_table tr:first-child td:last-child {
-  border-top-right-radius: 6px;
-}
-.rounded_table tr:last-child td:first-child {
-  border-bottom-left-radius: 6px;
-}
-.rounded_table tr:last-child td:last-child {
-  border-bottom-right-radius: 6px;
+.rounded_table {
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 12px;
+  tr:first-child td:first-child {
+  border-top-left-radius: 6px; }
+  tr:first-child td:last-child {
+  border-top-right-radius: 6px; }
+  tr:last-child td:first-child {
+  border-bottom-left-radius: 6px; }
+  tr:last-child td:last-child {
+  border-bottom-right-radius: 6px; }
 }
