@@ -51,5 +51,5 @@
 </div>
 <script type="text/javascript">
 	$("#month_bar").progressbar({ value : <%= Time.now.day.to_f / Time.now.end_of_month.day.to_f * 100%>});
-	$("#expenses_bar").progressbar({ value : <%= @balance.to_f / @income_month.to_f * 100%>});
+	$("#expenses_bar").progressbar({ value : <%= 100 - (@balance.to_f / @income_month.to_f * 100)%>});
 </script>
