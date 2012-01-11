@@ -11,13 +11,12 @@ class User < ActiveRecord::Base
 
 	has_and_belongs_to_many :contas
 	has_many :categorias
-	has_many :movimentacoes
 	has_many :own_accounts, :class_name => "Conta", :foreign_key => "owner_id"
 	has_many :movimentacoes, :through => :contas
 	after_create :create_accounts, :create_categories
 
 	def create_accounts
-		contas = ["Carteira", "Conta Corrente", "Poupança", "Cartão de Crédito"]
+		contas = ["Carteira", "Conta Corrente", "Poupança", "Cartão de Crédito", "Salário"]
 		for conta in contas
 			self.contas << Conta.create(descricao: conta, saldo: 0, owner: self)
 		end
@@ -31,7 +30,14 @@ class User < ActiveRecord::Base
 	end
 
 	def monthly_balance
-		movimentacoes.where(["date >= ? and date <= ? and tipo = ?",Time.now.beginning_of_month,Time.now.end_of_month,"E"]).sum("quantia") -
-		movimentacoes.where(["date >= ? and date <= ? and tipo = ?",Time.now.beginning_of_month,Time.now.end_of_month,"S"]).sum("quantia")
+		Movimentacao.where(["date >= ? and date <= ? and tipo = ? and conta_id in (?)",Time.now.beginning_of_month,Time.now.end_of_month,"E", contas]).sum("quantia") -
+		Movimentacao.where(["date >= ? and date <= ? and tipo in (?) and conta_id in (?)",Time.now.beginning_of_month,Time.now.end_of_month,["S","T"], contas]).sum("quantia") +
+		Movimentacao.where(["date >= ? and date <= ? and tipo = ? and conta_destino_id in (?)",Time.now.beginning_of_month,Time.now.end_of_month,"T", contas]).sum("quantia")
+	end
+
+	def daily_balance
+		Movimentacao.where(["date = ? and tipo = ? and conta_id in (?)",Time.now.to_date,"E", contas]).sum("quantia") -
+		Movimentacao.where(["date = ? and tipo in (?) and conta_id in (?)",Time.now.to_date,["S","T"], contas]).sum("quantia") +
+		Movimentacao.where(["date = ? and tipo = ? and conta_destino_id in (?)",Time.now.to_date,"T", contas]).sum("quantia")
 	end
 end

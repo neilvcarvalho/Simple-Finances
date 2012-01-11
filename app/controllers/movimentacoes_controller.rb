@@ -3,13 +3,6 @@
 class MovimentacoesController < ApplicationController
   before_filter :belongs_to_user, except: [:index, :create]
   def index
-    @movimentacoes = Movimentacao.where(["conta_id in (?)",current_user.contas]).order("date desc, id desc").limit(10)
-    @categorias = Categoria.find_all_by_user_id(current_user)
-    @contas = ContaDecorator.decorate(current_user.contas)
-    @movimentacao = Movimentacao.new
-    @tipos = [["gastei", "S"], ["ganhei", "E"], ["transferi", "T"]]
-    @balance = current_user.monthly_balance
-    @per_day = @balance / (Time.now.end_of_month.day - Time.now.day)
   end
 
   def show
@@ -23,6 +16,7 @@ class MovimentacoesController < ApplicationController
   def create
     params[:movimentacao][:quantia].gsub!(",",".")
     @movimentacao = Movimentacao.new(params[:movimentacao])
+    @movimentacao.user_id = current_user
     date = params[:movimentacao][:date]
     if date.present?
       date = date.split("/")

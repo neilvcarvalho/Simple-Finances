@@ -1,6 +1,6 @@
 module MovimentacoesHelper
 	def linha_tabela_movimentacao(movimentacao)
-		render "linha_movimentacao", :movimentacao => movimentacao
+		render "movimentacoes/linha_movimentacao", :movimentacao => movimentacao
 	end
 
 	def type_name(movimentacao)
