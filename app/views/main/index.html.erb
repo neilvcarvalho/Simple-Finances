@@ -29,7 +29,12 @@
 					<%= f.text_area :comment, size: "100x2", placeholder: "Insira um comentário aqui" %>
 				</div>
 			<% end %>
-			<!-- :) -->
+			<div id="month_bar" title="Mês">
+				<span style="position:absolute; margin-left:10px; margin-top:2px">Mês</span>
+			</div>
+			<div id="expenses_bar" title="Dinheiro">
+				<span style="position:absolute; margin-left:10px; margin-top:2px">Dinheiro</span>
+			</div>
 		</div>
 		<div id="movimentacoes">
 			<%= render "movimentacoes/movimentacoes", movimentacoes: @movimentacoes %>
@@ -44,3 +49,7 @@
 		<%= render 'categorias/categorias' %>
 	</div>
 </div>
+<script type="text/javascript">
+	$("#month_bar").progressbar({ value : <%= Time.now.day.to_f / Time.now.end_of_month.day.to_f * 100%>});
+	$("#expenses_bar").progressbar({ value : <%= @balance.to_f / @income_month.to_f * 100%>});
+</script>

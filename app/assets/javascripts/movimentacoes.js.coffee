@@ -16,3 +16,5 @@ jQuery ->
 		$("#comment").toggle(200)
 	$("#tabela_movimentacoes tr:even").addClass("line_even")
 	$("#tabela_movimentacoes tr:odd").addClass("line_odd")
+	$("#month_bar").progressbar()
+	$("#expenses_bar").progressbar()
