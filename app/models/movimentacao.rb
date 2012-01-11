@@ -9,6 +9,9 @@ class Movimentacao < ActiveRecord::Base
 	validates_numericality_of :quantia, :greater_than => 0
 	after_save :atualiza_saldo_conta
 	before_destroy :update_balance_removal
+	scope :income, where("tipo = 'E'")
+	scope :outcome, where("tipo = 'S'")
+	scope :transfers, where("tipo = 'T'")
 
 	def atualiza_saldo_conta
 		conta_destino = Conta.find_by_id(conta_destino_id)
