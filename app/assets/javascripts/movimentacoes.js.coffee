@@ -13,6 +13,6 @@ jQuery ->
 			$("#account_from_in").text("na conta")
 			$("#movimentacao_conta_destino_id").val('')
 	$("#toggle_comment").click ->
-		$("#comment").toggle()
+		$("#comment").toggle(200)
 	$("#tabela_movimentacoes tr:even").addClass("line_even")
 	$("#tabela_movimentacoes tr:odd").addClass("line_odd")
