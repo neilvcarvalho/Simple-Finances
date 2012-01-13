@@ -1,5 +1,5 @@
 <table id="accounts_table" class="rounded_table">
-  <% for conta in @contas %>
+  <% for conta in ContaDecorator.decorate(current_user.contas) %>
     <tr class="<%=cycle('line_odd','line_even')%>">
       <td style="width: 100px"><%= number_to_currency conta.saldo %></td>
       <td><%= conta.description_owner %></td>

@@ -1,5 +1,5 @@
 <table class="rounded_table" id="categories_table">
-	<% for categoria in @categorias %>
+	<% for categoria in CategoriaDecorator.decorate(current_user.categorias) %>
 		<tr class="<%=cycle("line_odd","line_even")%>">
 			<td style="width: 100px" title="Saldo da categoria <%= categoria.descricao %> neste mês"><%= number_to_currency categoria.monthly_balance %></td>
 			<td><%= categoria.descricao %></td>

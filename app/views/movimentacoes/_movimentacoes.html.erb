@@ -1,3 +1,8 @@
+<% if current_user.reserves.any? %>
+	<div id="reserves_div">
+	<%= render "reserves/reserves" %>
+	</div>
+<% end %>
 <table id="tabela_movimentacoes" class="rounded_table">
 	<% for movimentacao in movimentacoes %>
 		<%= linha_tabela_movimentacao(movimentacao) %>
