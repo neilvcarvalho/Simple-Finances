@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 	has_many :categorias
 	has_many :own_accounts, :class_name => "Conta", :foreign_key => "owner_id"
 	has_many :movimentacoes, :through => :contas
+	has_many :reserves, :through => :contas
 	after_create :create_accounts, :create_categories
 
 	def create_accounts
@@ -34,6 +35,10 @@ class User < ActiveRecord::Base
 		Movimentacao.where(["tipo in (?) and conta_id in (?)",["S","T"], contas]).this_month.sum("quantia") +
 		Movimentacao.where(["tipo = ? and conta_destino_id in (?)","T", contas]).this_month.sum("quantia") -
 		total_reserve
+	end
+
+	def monthly_income
+		movimentacoes.income.this_month.sum("quantia")
 	end
 
 	def daily_balance

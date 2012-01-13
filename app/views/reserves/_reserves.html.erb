@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Sum</th>
+    <th>Conta</th>
+  </tr>
+  <% for reserve in @reserves %>
+    <tr>
+      <td><%= reserve.sum %></td>
+      <td><%= reserve.conta_id %></td>
+      <td><%= link_to "Show", reserve %></td>
+      <td><%= link_to "Edit", edit_reserve_path(reserve) %></td>
+      <td><%= link_to "Destroy", reserve, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Reserve", new_reserve_path %></p>

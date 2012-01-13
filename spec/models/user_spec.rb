@@ -52,4 +52,15 @@ describe User do
 		FactoryGirl.create(:reserve, conta: conta2, sum: 400)
 		@user.total_reserve.should == 1000
 	end
+
+	it "should calculate his monthly income" do
+		@user.save
+		conta1 = Factory.create(:conta)
+		conta2 = Factory.create(:conta)
+		@user.contas << [conta1, conta2]
+		FactoryGirl.create(:movimentacao, date: Time.now.to_date, quantia: 1000, conta: conta1, tipo: "E")
+		FactoryGirl.create(:movimentacao, date: Time.now.to_date, quantia: 200, conta: conta1, tipo: "T", conta_destino_id: conta2.id)
+		FactoryGirl.create(:movimentacao, date: Time.now.to_date, quantia: 500, conta: conta1, tipo: "S")
+		@user.monthly_income.should == 1000
+	end
 end
