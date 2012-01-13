@@ -1,0 +1,10 @@
+<div id="month_bar" title="<%= "Faltam #{Time.now.end_of_month.day - Time.now.day} dias para o final do mês"%>">
+			<span style="position:absolute; margin-left:20px; margin-top:5px">Mês</span>
+		</div>
+		<div id="expenses_bar" title="<%= "Você ganhou #{number_to_currency current_user.monthly_income} e tem #{number_to_currency current_user.monthly_balance} disponíveis" %>">
+			<span style="position:absolute; margin-left:20px; margin-top:5px">Dinheiro</span>
+		</div>
+<script type="text/javascript">
+	$("#month_bar").progressbar({ value : <%= Time.now.day.to_f / Time.now.end_of_month.day.to_f * 100%>});
+	$("#expenses_bar").progressbar({ value : <%= 100 - (current_user.monthly_balance.to_f / current_user.monthly_income.to_f * 100)%>});
+</script>

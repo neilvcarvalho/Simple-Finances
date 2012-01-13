@@ -3,6 +3,7 @@
 		<li><%=link_to "Movimentações", "#aba_movimentacoes"%></li>
 		<li><%=link_to "Contas", "#aba_contas"%></li>
 		<li><%=link_to "Categorias", "#aba_categorias"%></li>
+		<li><%=link_to "Reservas", "#aba_reservas"%></li>
 	</ul>
 	<div id="aba_movimentacoes">
 		<div id="movimentacao">
@@ -35,11 +36,8 @@
 		</div>
 		<br/>
 		<span id="linha_saldo"><%= linha_saldo_user %></span>
-		<div id="month_bar" title="<%= "Faltam #{Time.now.end_of_month.day - Time.now.day} dias para o final do mês"%>">
-			<span style="position:absolute; margin-left:20px; margin-top:5px">Mês</span>
-		</div>
-		<div id="expenses_bar" title="<%= "Você ganhou #{number_to_currency @income_month} e tem #{number_to_currency @balance} disponíveis" %>">
-			<span style="position:absolute; margin-left:20px; margin-top:5px">Dinheiro</span>
+		<div id="progress_bars">
+			<%= render 'movimentacoes/bars' %>
 		</div>
 	</div>
 	<div id="aba_contas">
@@ -48,8 +46,7 @@
 	<div id="aba_categorias">
 		<%= render 'categorias/categorias' %>
 	</div>
+	<div id="aba_reservas">
+		<%= render 'reserves/reserves' %>
+	</div>
 </div>
-<script type="text/javascript">
-	$("#month_bar").progressbar({ value : <%= Time.now.day.to_f / Time.now.end_of_month.day.to_f * 100%>});
-	$("#expenses_bar").progressbar({ value : <%= 100 - (current_user.monthly_balance.to_f / current_user.monthly_income.to_f * 100)%>});
-</script>

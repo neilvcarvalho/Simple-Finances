@@ -1,17 +1,10 @@
-<table>
-  <tr>
-    <th>Sum</th>
-    <th>Conta</th>
-  </tr>
-  <% for reserve in @reserves %>
-    <tr>
-      <td><%= reserve.sum %></td>
-      <td><%= reserve.conta_id %></td>
-      <td><%= link_to "Show", reserve %></td>
-      <td><%= link_to "Edit", edit_reserve_path(reserve) %></td>
-      <td><%= link_to "Destroy", reserve, :confirm => 'Are you sure?', :method => :delete %></td>
+<table class="rounded_table" id="reserves_table">
+  <% for reserve in current_user.reserves %>
+    <tr class="<%= cycle("line_odd", "line_even") %>">
+      <td style="width: 100px"><%= number_to_currency reserve.sum %></td>
+      <td><%= reserve.description || "Nenhuma descrição" %></td>
+      <td><%= ContaDecorator.decorate(reserve.conta).description_owner %></td>
+      <td style="width:15px"><%= link_to('X', reserve, class: "ui-icon ui-icon-circle-close", :method => :delete, :remote => true, :confirm => "Tem certeza que deseja apagar a reserva #{reserve.description}?") %></td>
     </tr>
   <% end %>
 </table>
-
-<p><%= link_to "New Reserve", new_reserve_path %></p>

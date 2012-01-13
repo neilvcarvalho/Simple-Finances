@@ -1,6 +1,7 @@
 <% if @salvou %>
 	$('#tabela_movimentacoes').
 	prepend('<%= escape_javascript(render("linha_movimentacao", :movimentacao => @movimentacao)) %>')
+	$("#progress_bars").html('<%= escape_javascript(render("movimentacoes/bars"))%>')
 	$("#movimentacao-<%=@movimentacao.id%>").effect("highlight", {}, 4000)
 
 	$("#linha_saldo").text("<%= escape_javascript(linha_saldo_user)%>")
