@@ -1,6 +1,6 @@
 FactoryGirl.define do
 	factory :conta do
-		saldo 1000
+		saldo 0
 		descricao "Foo"
 	end
 
@@ -17,9 +17,14 @@ FactoryGirl.define do
 
 	factory :movimentacao do
 		association :categoria
-		quantia 100
+		quantia 0
 		association :conta
 		tipo "S" # E, S ou T
 		date Time.now
+	end
+
+	factory :reserve do
+		association :conta
+		sum 0
 	end
 end

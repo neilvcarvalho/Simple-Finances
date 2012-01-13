@@ -1,0 +1,16 @@
+<% title "Reserve" %>
+
+<p>
+  <strong>Sum:</strong>
+  <%= @reserve.sum %>
+</p>
+<p>
+  <strong>Conta:</strong>
+  <%= @reserve.conta_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_reserve_path(@reserve) %> |
+  <%= link_to "Destroy", @reserve, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", reserves_path %>
+</p>

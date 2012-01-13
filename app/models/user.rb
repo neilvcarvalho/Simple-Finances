@@ -32,12 +32,17 @@ class User < ActiveRecord::Base
 	def monthly_balance
 		Movimentacao.where(["tipo = ? and conta_id in (?)","E", contas]).this_month.sum("quantia") -
 		Movimentacao.where(["tipo in (?) and conta_id in (?)",["S","T"], contas]).this_month.sum("quantia") +
-		Movimentacao.where(["tipo = ? and conta_destino_id in (?)","T", contas]).this_month.sum("quantia")
+		Movimentacao.where(["tipo = ? and conta_destino_id in (?)","T", contas]).this_month.sum("quantia") -
+		total_reserve
 	end
 
 	def daily_balance
 		Movimentacao.where(["date = ? and tipo = ? and conta_id in (?)",Time.now.to_date,"E", contas]).sum("quantia") -
 		Movimentacao.where(["date = ? and tipo in (?) and conta_id in (?)",Time.now.to_date,["S","T"], contas]).sum("quantia") +
 		Movimentacao.where(["date = ? and tipo = ? and conta_destino_id in (?)",Time.now.to_date,"T", contas]).sum("quantia")
+	end
+
+	def total_reserve
+		Reserve.where(["conta_id in (?)", contas]).sum("sum")
 	end
 end

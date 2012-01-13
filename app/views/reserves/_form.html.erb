@@ -1,0 +1,12 @@
+<%= form_for @reserve do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :sum %><br />
+    <%= f.text_field :sum %>
+  </p>
+  <p>
+    <%= f.label :conta_id %><br />
+    <%= f.number_field :conta_id %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

@@ -18,7 +18,8 @@ describe Movimentacao do
 	end
 
 	it "should update its account balance after save and deletion" do
-		conta = Factory.create(:conta, saldo: 100)
+		conta = Factory.create(:conta, saldo: 0)
+		movimentacao = Factory.create(:movimentacao, tipo: "E", conta: conta, quantia: 100)
 		movimentacao = Factory.create(:movimentacao, tipo: "S", conta: conta, quantia: 10)
 		conta.saldo.should == 90
 		movimentacao2 = Factory.create(:movimentacao, tipo: "E", conta: conta, quantia: 30)

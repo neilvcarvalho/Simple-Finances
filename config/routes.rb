@@ -1,4 +1,6 @@
 SimpleFinances::Application.routes.draw do
+  resources :reserves
+
   get "main/index"
 
   resources :movimentacoes

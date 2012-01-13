@@ -31,4 +31,12 @@ describe Conta do
 		@conta.monthly_balance.to_f.should == 300
 		conta2.monthly_balance.to_f.should == 200
 	end
+
+	it "should ignore the reserve when calculating the monthly balance" do
+		@conta.save
+		FactoryGirl.create(:reserve, sum: 100, conta: @conta)
+		FactoryGirl.create(:movimentacao, quantia: 1000, conta: @conta, tipo: "E")
+		FactoryGirl.create(:movimentacao, quantia: 500, conta: @conta, tipo: "S")
+		@conta.monthly_balance.should == 400
+	end
 end
