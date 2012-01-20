@@ -1,10 +1,10 @@
 <table class="rounded_table" id="reserves_table">
   <% for reserve in current_user.reserves %>
     <tr class="<%= cycle("line_odd", "line_even") %>">
-      <td style="width: 100px"><%= number_to_currency reserve.sum %></td>
-      <td><%= reserve.description || "Nenhuma descrição" %></td>
+      <td style="width: 90px"><%= number_to_currency reserve.sum %></td>
+      <td class="reserve_description"><%= reserve.description || "Nenhuma descrição" %></td>
       <td><%= ContaDecorator.decorate(reserve.conta).description_owner %></td>
-      <td style="width:15px"><%= link_to('X', reserve, class: "ui-icon ui-icon-circle-close", :method => :delete, :remote => true, :confirm => "Tem certeza que deseja apagar a reserva #{reserve.description}?") %></td>
+      <td class="close_button"><%= link_to('X', reserve, class: "ui-icon ui-icon-circle-close", :method => :delete, :remote => true, :confirm => "Tem certeza que deseja apagar a reserva #{reserve.description}?") %></td>
     </tr>
   <% end %>
 </table>

@@ -97,6 +97,9 @@ a {
     background-color: #c00;
     color: #fff; } }
 
+.movement {
+  width: 100px;
+}
 .movimentacao_S {
   color: red;
 }
@@ -105,6 +108,15 @@ a {
 }
 .linha_mov_data {
   width:90px;
+}
+.movement_description {
+  width: 300px;
+}
+.reserve_description {
+  width: 420px;
+}
+.close_button {
+  width:15px;
 }
 .linha_mov_data.futuro {
   background-image: url(/assets/calendar.png);

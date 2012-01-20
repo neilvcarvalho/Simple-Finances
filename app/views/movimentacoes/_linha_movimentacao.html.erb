@@ -1,18 +1,18 @@
 <tr class="movimentacao" id="movimentacao-<%=movimentacao.id%>">
-	<td class="linha_mov_data<%= " futuro" if movimentacao.date > Time.now.to_date%>">
+	<td class="linha_mov_data <%= "futuro" if movimentacao.date > Time.now.to_date%>">
 	<% movimentacao = MovimentacaoDecorator.decorate(movimentacao) %>
 	<%= movimentacao.date.strftime('%d/%m/%Y') %>
 	</td>
 	<% if movimentacao.tipo != "T" %>
-		<td><%= movimentacao.nome_categoria %> <%= image_tag("plus.png",title: movimentacao.comment) unless movimentacao.comment.blank?%></td>
+		<td class="movement_description"><%= movimentacao.nome_categoria %> <%= image_tag("plus.png",title: movimentacao.comment) unless movimentacao.comment.blank?%></td>
 	<% else %>
-		<td>Transferência <%= image_tag("plus.png",title: movimentacao.comment) unless movimentacao.comment.blank?%></td>
+		<td class="movement_description">Transferência <%= image_tag("plus.png",title: movimentacao.comment) unless movimentacao.comment.blank?%></td>
 	<% end %>
-	<td class="movimentacao_<%=movimentacao.tipo%>"><%= number_to_currency(movimentacao.quantia) %></td>
+	<td class="movement movimentacao_<%=movimentacao.tipo%>"><%= number_to_currency(movimentacao.quantia) %></td>
 	<% if movimentacao.tipo != "T" %>
 		<td><%= ContaDecorator.decorate(movimentacao.conta).description_owner %></td>
 	<% else %>
 		<td><%= ContaDecorator.decorate(movimentacao.conta).description_owner %> - <%= ContaDecorator.decorate(Conta.find_by_id(movimentacao.conta_destino_id)).try(:description_owner) %> </td>
 	<% end %>
-	<td style="width:15px"><%= link_to('X', movimentacao, class: "ui-icon ui-icon-circle-close", :method => :delete, :remote => true, :confirm => 'Tem certeza?') %></td>
+	<td class="close_button"><%= link_to('X', movimentacao, class: "ui-icon ui-icon-circle-close", :method => :delete, :remote => true, :confirm => 'Tem certeza?') %></td>
 </tr>
