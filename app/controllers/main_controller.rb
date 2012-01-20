@@ -9,5 +9,6 @@ class MainController < ApplicationController
     @per_day = @balance / (Time.now.end_of_month.day - Time.now.day)
     @last_movement = Movimentacao.where(["user_id = ?",current_user]).order("created_at DESC").first
     @movimentacao = Movimentacao.new(categoria_id: @last_movement.try(:categoria).try(:id), conta_id: @last_movement.try(:conta).try(:id))
+    @reserve = Reserve.new
   end
 end

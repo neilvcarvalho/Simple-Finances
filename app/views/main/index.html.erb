@@ -35,6 +35,18 @@
 			<%= render "movimentacoes/movimentacoes", movimentacoes: @movimentacoes %>
 		</div>
 		<br/>
+		<div id="reserve">
+			<%= form_for(@reserve, :remote => true, id: "{new_reserve_index}") do |f| %>
+				Reservei
+				R$
+				<%= f.text_field :sum, size: 15, :autocomplete => :off %>
+				para
+				<%= f.text_field :description, :size => 30, :autocomplete => :off %>
+				na conta
+				<%= f.collection_select :conta_id, @contas, :id, :description_owner %>
+				<%= f.submit "Incluir", :id => "add_reserve", disable_with: "Incluindo..." %>
+			<% end %>
+		</div>
 		<div id="reserves">
 			<%= render "reserves/reserves" %>
 		</div>
