@@ -13,10 +13,14 @@ class ReservesController < ApplicationController
 
   def create
     @reserve = Reserve.new(params[:reserve])
-    if @reserve.save
-      redirect_to @reserve, :notice => "Successfully created reserve."
-    else
-      render :action => 'new'
+    respond_to do |format|
+      if @reserve.save
+        format.html { redirect_to @reserve, :notice => "Successfully created reserve." }
+        format.js
+      else
+        format.html { render :action => 'new' }
+        format.js
+      end
     end
   end
 
@@ -36,6 +40,9 @@ class ReservesController < ApplicationController
   def destroy
     @reserve = Reserve.find(params[:id])
     @reserve.destroy
-    redirect_to reserves_url, :notice => "Successfully destroyed reserve."
+    respond_to do |format|
+      format.html { redirect_to reserves_url, :notice => "Successfully destroyed reserve." }
+      format.js
+    end
   end
 end

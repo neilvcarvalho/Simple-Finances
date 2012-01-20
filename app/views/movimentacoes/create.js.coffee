@@ -1,4 +1,4 @@
-<% if @salvou %>
+<% unless @movimentacao.new_record? %>
 	$('#tabela_movimentacoes').
 	prepend('<%= escape_javascript(render("linha_movimentacao", :movimentacao => @movimentacao)) %>')
 	$("#progress_bars").html('<%= escape_javascript(render("movimentacoes/bars"))%>')
@@ -11,5 +11,5 @@
 	$("#tabela_movimentacoes tr:even").addClass("line_even")
 	$("#tabela_movimentacoes tr:odd").addClass("line_odd")
 <% else %>
-	alert "Dados inválidos."
+	alert "A movimentação não pôde ser salva. Tem certeza que incluiu todos os dados válidos?"
 <% end %>

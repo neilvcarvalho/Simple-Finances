@@ -1,6 +1,6 @@
 <table class="rounded_table" id="reserves_table">
   <% for reserve in current_user.reserves %>
-    <tr class="<%= cycle("line_odd", "line_even") %>">
+    <tr class="<%= cycle("line_odd", "line_even") %>" id="reserve-<%= reserve.id%>">
       <td style="width: 90px"><%= number_to_currency reserve.sum %></td>
       <td class="reserve_description"><%= reserve.description || "Nenhuma descrição" %></td>
       <td><%= ContaDecorator.decorate(reserve.conta).description_owner %></td>
