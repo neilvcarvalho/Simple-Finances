@@ -17,10 +17,14 @@ class CategoriasController < ApplicationController
   def create
     @categoria = Categoria.new(params[:categoria])
     @categoria.user_id = current_user.id
-    if @categoria.save
-      redirect_to @categoria, :notice => "Successfully created categoria."
-    else
-      render :action => 'new'
+    respond_to do |format|
+      if @categoria.save
+        format.html { redirect_to @categoria, :notice => "Successfully created categoria." }
+        format.js
+      else
+        format.html { render :action => 'new' }
+        format.js
+      end
     end
   end
 

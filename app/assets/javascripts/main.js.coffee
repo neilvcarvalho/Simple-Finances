@@ -19,12 +19,12 @@ jQuery ->
 	$("#tabela_movimentacoes tr:odd").addClass("line_odd")
 	$("#month_bar").progressbar()
 	$("#expenses_bar").progressbar()
-	$("#movimentacao_categoria_id").append("<option value='new_cat' id='create_new_category'>Nova categoria</option>")
+	$("#movimentacao_categoria_id").prepend("<option value='new_cat' id='create_new_category'>Nova categoria</option>")
 	$("#movimentacao_categoria_id").change ->
 		opt_id = $(this).children(":selected").attr("id")
 		if opt_id == "create_new_category"
 			cat_name = prompt "Qual é o nome da categoria que você deseja inserir?"
 			if cat_name != ""
-				$.post("categorias", { categoria: { descricao: cat_name } })
+				$.post("categorias", { categoria: { descricao: cat_name } }, null, "script")
 			else
 				$(this).val('');
