@@ -1,0 +1,4 @@
+$("#aba_contas").html("<%= escape_javascript(render('contas/contas')) %>")
+$("#aba_categorias").html("<%= escape_javascript(render('categorias/categorias')) %>")
+$("#progress_bars").html('<%= escape_javascript(render("movimentacoes/bars"))%>')
+$("#linha_saldo").text("<%= escape_javascript(linha_saldo_user)%>")
