@@ -28,3 +28,4 @@ jQuery ->
 				$.post("categorias", { categoria: { descricao: cat_name } }, null, "script")
 			else
 				$(this).val('');
+	$("#tabs").fadeIn(500)

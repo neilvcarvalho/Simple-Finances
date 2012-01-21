@@ -45,7 +45,10 @@ class CategoriasController < ApplicationController
   def destroy
     @categoria = Categoria.find(params[:id])
     @categoria.destroy
-    redirect_to categorias_url, :notice => "Successfully destroyed categoria."
+    respond_to do |format|
+      format.html { edirect_to categorias_url, :notice => "Successfully destroyed categoria." }
+      format.js
+    end
   end
 
   private
