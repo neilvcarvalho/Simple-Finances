@@ -4,6 +4,6 @@ class Categoria < ActiveRecord::Base
   has_many :movimentacoes
 
   def monthly_balance
-  	movimentacoes.where(["tipo = ?", "E"]).sum("quantia") - movimentacoes.where(["tipo = ?", "S"]).sum("quantia")
+  	movimentacoes.this_month.where(["tipo = ?", "E"]).sum("quantia") - movimentacoes.this_month.where(["tipo = ?", "S"]).sum("quantia")
   end
 end
