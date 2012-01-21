@@ -29,3 +29,4 @@ jQuery ->
 			else
 				$(this).val('');
 	$("#tabs").fadeIn(500)
+	$("#flash_notice").delay(10000).fadeOut(400)
