@@ -1,4 +1,4 @@
-$("#aba_contas").html("<%= escape_javascript(render('contas/contas')) %>")
-$("#aba_categorias").html("<%= escape_javascript(render('categorias/categorias')) %>")
-$("#progress_bars").html('<%= escape_javascript(render("movimentacoes/bars"))%>')
-$("#linha_saldo").text("<%= escape_javascript(linha_saldo_user)%>")
+$("#linha_saldo").text("<%= j(linha_saldo_user)%>")
+$("#progress_bars").html("<%= j(render('movimentacoes/bars'))%>")
+$("#aba_contas").html("<%= j(render('contas/contas')) %>")
+$("#aba_categorias").html("<%= j(render('categorias/categorias')) %>")

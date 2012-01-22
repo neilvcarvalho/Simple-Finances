@@ -1,4 +1,5 @@
-<% unless @movimentacao.new_record? %>
+jQuery ->
+	<% unless @movimentacao.new_record? %>
 	$('#tabela_movimentacoes').
 	prepend('<%= escape_javascript(render("linha_movimentacao", :movimentacao => @movimentacao)) %>')
 	$("#movimentacao-<%=@movimentacao.id%>").effect("highlight", {}, 4000)
@@ -10,6 +11,6 @@
 	$("#tabela_movimentacoes tr:odd").addClass("line_odd")
 
 	<%= render :partial => "update_information" %>
-<% else %>
+	<% else %>
 	alert "A movimentação não pôde ser salva. Tem certeza que incluiu todos os dados válidos?"
-<% end %>
+	<% end %>
