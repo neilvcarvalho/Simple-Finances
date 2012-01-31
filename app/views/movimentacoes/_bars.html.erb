@@ -5,6 +5,6 @@
 			<span style="position:absolute; margin-left:20px; margin-top:5px">Dinheiro</span>
 		</div>
 <script type="text/javascript">
-	$("#month_bar").progressbar({ value : <%= Time.now.day.to_f / Time.now.end_of_month.day.to_f * 100%>});
+	$("#month_bar").progressbar({ value : <%= 1 + Time.now.day.to_f / Time.now.end_of_month.day.to_f * 100%>});
 	$("#expenses_bar").progressbar({ value : <%= 100 - (current_user.monthly_balance.to_f / current_user.monthly_income.to_f * 100)%>});
 </script>
