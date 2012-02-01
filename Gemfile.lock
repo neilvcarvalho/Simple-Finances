@@ -29,7 +29,6 @@ GEM
       activesupport (= 3.1.1)
     activesupport (3.1.1)
       multi_json (~> 1.0)
-    addressable (2.2.6)
     ansi (1.4.1)
     arel (2.2.1)
     bcrypt-ruby (3.0.1)
@@ -85,19 +84,12 @@ GEM
       thor (~> 0.14.6)
     guard-rspec (0.5.9)
       guard (>= 0.8.4)
-    heroku (2.17.0)
-      launchy (>= 0.3.2)
-      rest-client (~> 1.6.1)
-      rubyzip
-      term-ansicolor (~> 1.0.5)
     hike (1.2.1)
     i18n (0.6.0)
     jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
     json (1.6.4)
-    launchy (2.0.5)
-      addressable (~> 2.2.6)
     libv8 (3.3.10.4)
     mail (2.3.0)
       i18n (>= 0.4.0)
@@ -143,8 +135,6 @@ GEM
       rake
     rdoc (3.12)
       json (~> 1.4)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     rspec (2.7.0)
       rspec-core (~> 2.7.0)
       rspec-expectations (~> 2.7.0)
@@ -209,7 +199,6 @@ DEPENDENCIES
   growl
   guard
   guard-rspec
-  heroku
   jquery-rails
   mocha
   nifty-generators
