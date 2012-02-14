@@ -9,7 +9,7 @@ module MovimentacoesHelper
 
 	def linha_saldo_user
 		@balance = current_user.monthly_balance
-    	@per_day = @balance / (Time.now.end_of_month.day - Time.now.day + 1)
+		@per_day = @balance / (Time.now.end_of_month.day - Time.now.day + 1)
 		"Saldo mensal: #{number_to_currency @balance} (#{number_to_currency @per_day}/dia)".html_safe
 	end
 end

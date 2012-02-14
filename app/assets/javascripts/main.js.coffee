@@ -14,7 +14,7 @@ jQuery ->
 			$("#account_from_in").text("na conta")
 			$("#movimentacao_conta_destino_id").val('')
 	$("#toggle_comment").click ->
-		$("#comment").toggle(200)
+		$("#comment").toggle(200, $("#comment").focus())
 	$("#tabela_movimentacoes tr:even").addClass("line_even")
 	$("#tabela_movimentacoes tr:odd").addClass("line_odd")
 	$("#month_bar").progressbar()
